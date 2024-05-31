@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -39,3 +40,9 @@ export class JobApplicationService {
         return updatedJobApplication
     }
 }
+=======
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class JobApplicationService {}
+>>>>>>> d4a1512b9075a9e430e08553e6d9fa94277ec1c0
