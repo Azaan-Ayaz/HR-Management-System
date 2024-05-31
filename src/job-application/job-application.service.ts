@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -6,13 +5,14 @@ import { CreateCandidateDTO } from 'src/candidate/create-candidate.dto';
 import { JobApplication } from 'src/schemas/jobApplication.schema';
 // import { JobApplication } from './../schemas/jobApplication.schema';
 import { UpdateCandidateDTO } from 'src/candidate/update-candidate.dto';
+import { CreateJobApplicationDTO } from './create-jobApplication.dto';
 
 @Injectable()
 export class JobApplicationService {
 
     constructor(@InjectModel(JobApplication.name) private jobApplicationModel : Model<JobApplication>){}
 
-    async create(createJobApplicationDTO : CreateCandidateDTO):Promise<JobApplication>{
+    async create(createJobApplicationDTO : CreateJobApplicationDTO):Promise<JobApplication>{
         const newJobApplication = new this.jobApplicationModel(createJobApplicationDTO)
         const savedJobApplication = await newJobApplication.save()
         return savedJobApplication
@@ -39,10 +39,8 @@ export class JobApplicationService {
         const updatedJobApplication = await updateJobApplication.save()
         return updatedJobApplication
     }
-}
-=======
-import { Injectable } from '@nestjs/common';
 
-@Injectable()
-export class JobApplicationService {}
->>>>>>> d4a1512b9075a9e430e08553e6d9fa94277ec1c0
+    async remove(id:string):Promise<JobApplication>{
+        return this.jobApplicationModel.findByIdAndDelete(id)
+    }
+}
