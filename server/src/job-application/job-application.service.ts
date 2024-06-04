@@ -22,13 +22,13 @@ export class JobApplicationService {
         return this.jobApplicationModel.find().populate("candidate").populate("job").exec()
     }
 
-    async findOne(id:string):Promise<JobApplication>{
-        const jobApplication = this.jobApplicationModel.findById(id).exec()
-        if(!jobApplication) {
-            throw new NotFoundException("Job not found")
+        async findOne(id:string):Promise<JobApplication>{
+            const jobApplication = this.jobApplicationModel.findById(id).populate('job').populate('candidate').exec()
+            if(!jobApplication) {
+                throw new NotFoundException("Job not found")
+            }
+            return jobApplication
         }
-        return jobApplication
-    }
 
     async update(id:string, updateJobApplicationDTO : UpdateCandidateDTO):Promise<JobApplication>{
         const updateJobApplication = await this.jobApplicationModel.findByIdAndUpdate(id).exec()

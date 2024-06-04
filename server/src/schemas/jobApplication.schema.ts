@@ -12,7 +12,7 @@ export class JobApplication extends Document{
     @Prop({required: true, type:mongoose.Schema.Types.ObjectId, ref: "Job"})
     job: Job
 
-    @Prop({required: true})
+    @Prop({required: true, default:Date.now})
     appliedAt: Date
 }
 

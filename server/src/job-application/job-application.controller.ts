@@ -13,7 +13,7 @@ export class JobApplicationController {
         return this.jobApplicationService.findAll()
     }
 
-    @Get('id')
+    @Get(':id')
     findOne(@Param("id") id:string):Promise<JobApplication>{
         return this.jobApplicationService.findOne(id)
     }
@@ -24,7 +24,7 @@ export class JobApplicationController {
     }
 
     @Delete()
-    remove(@Param("id") id:string,
+    remove(@Param(":id") id:string,
         @Body() updateJobApplicationDTO: UpdateJobApplicationDTO):Promise<JobApplication>{
             return this.jobApplicationService.remove(id)
         }

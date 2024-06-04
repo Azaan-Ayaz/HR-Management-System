@@ -17,7 +17,7 @@ export class JobService {
     }
 
     async findAll(): Promise<Job[]> {
-        return this.jobModel.find().exec();
+        return this.jobModel.find().populate('jobApplications').exec();
     }
 
     async findOne(id: string): Promise<Job> {

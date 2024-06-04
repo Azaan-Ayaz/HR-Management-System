@@ -14,7 +14,7 @@ export class Job extends Document{
     status: string   // close & open
 
     @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'JobApplication' }] })
-    jobApplications: JobApplication[];
+    jobApplications: JobApplication;
 }
 
 export const JobSchema = SchemaFactory.createForClass(Job)
