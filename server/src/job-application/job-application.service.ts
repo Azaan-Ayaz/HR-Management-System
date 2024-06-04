@@ -19,7 +19,7 @@ export class JobApplicationService {
     }
 
     async findAll():Promise<JobApplication[]>{
-        return this.jobApplicationModel.find().exec()
+        return this.jobApplicationModel.find().populate("candidate").populate("job").exec()
     }
 
     async findOne(id:string):Promise<JobApplication>{

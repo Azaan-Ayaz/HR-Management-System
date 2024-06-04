@@ -8,7 +8,7 @@ import { JobApplicationModule } from './job-application/job-application.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/HR', {
+    MongooseModule.forRoot('mongodb+srv://azaan:azaan@cluster0.deanbuu.mongodb.net/HR', {
       connectionFactory: (connection) => {
         connection.on('error', (err) => {
           console.error('Mongoose connection error:', err);
