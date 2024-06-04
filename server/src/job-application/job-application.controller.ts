@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { JobApplicationService } from './job-application.service';
 import { JobApplication } from 'src/schemas/jobApplication.schema';
 import { CreateJobApplicationDTO } from './create-jobApplication.dto';
-import { UpdateJobApplicationDTO } from './update-jobApplication.dto';
+// import { UpdateJobApplicationDTO } from './update-jobApplication.dto';
 
 @Controller('job-application')
 export class JobApplicationController {
@@ -24,8 +24,7 @@ export class JobApplicationController {
     }
 
     @Delete()
-    remove(@Param(":id") id:string,
-        @Body() updateJobApplicationDTO: UpdateJobApplicationDTO):Promise<JobApplication>{
+    remove(@Param(":id") id:string):Promise<JobApplication>{
             return this.jobApplicationService.remove(id)
         }
 }
